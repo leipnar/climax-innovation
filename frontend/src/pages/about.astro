@@ -1,0 +1,157 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import CTA from '../components/CTA.astro';
+
+const values = [
+  {
+    title: 'Innovation',
+    description: 'We continuously push the boundaries of what is possible in construction technology.',
+    icon: '💡'
+  },
+  {
+    title: 'Safety',
+    description: 'Every solution we build prioritizes the safety of workers and communities.',
+    icon: '🛡️'
+  },
+  {
+    title: 'Sustainability',
+    description: 'We are committed to reducing the environmental impact of construction projects.',
+    icon: '🌱'
+  },
+  {
+    title: 'Excellence',
+    description: 'We deliver exceptional quality in every project we undertake.',
+    icon: '⭐'
+  },
+];
+
+const milestones = [
+  { year: '2019', title: 'Founded', description: 'Climax Innovation was established with a vision to transform construction.' },
+  { year: '2020', title: 'First Platform Launch', description: 'Released our initial IoT monitoring solution.' },
+  { year: '2022', title: 'AI Integration', description: 'Introduced AI-powered predictive analytics.' },
+  { year: '2024', title: 'Global Expansion', description: 'Expanded to serve clients across 20+ countries.' },
+];
+---
+
+<Layout title="About Us">
+  <Header />
+  <main>
+    <section class="pt-32 pb-20 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl">
+          <p class="text-blue-600 font-semibold tracking-wide uppercase text-sm mb-4">
+            About Us
+          </p>
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
+            Building a Smarter Future
+          </h1>
+          <p class="text-lg text-gray-600 leading-relaxed">
+            Climax Innovation is at the forefront of transforming the construction industry 
+            through cutting-edge technology. We combine IoT, AI, and data analytics to create 
+            safer, smarter, and more sustainable construction operations.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+              Our Mission
+            </h2>
+            <p class="text-lg text-gray-600 mb-6">
+              We believe that technology can revolutionize how construction projects are managed. 
+              Our mission is to provide innovative solutions that enhance safety, improve efficiency, 
+              and reduce environmental impact across the construction industry.
+            </p>
+            <p class="text-lg text-gray-600">
+              With decades of combined experience in construction and technology, our team 
+              understands the unique challenges faced by the industry and delivers practical, 
+              results-driven solutions.
+            </p>
+          </div>
+          <div class="bg-gradient-to-br from-blue-600 to-indigo-600 rounded-2xl p-8 text-white">
+            <h3 class="text-2xl font-bold mb-6">Our Impact</h3>
+            <div class="grid grid-cols-2 gap-6">
+              <div>
+                <div class="text-4xl font-bold">500+</div>
+                <div class="text-blue-200">Projects Completed</div>
+              </div>
+              <div>
+                <div class="text-4xl font-bold">20+</div>
+                <div class="text-blue-200">Countries Served</div>
+              </div>
+              <div>
+                <div class="text-4xl font-bold">60%</div>
+                <div class="text-blue-200">Safety Improvement</div>
+              </div>
+              <div>
+                <div class="text-4xl font-bold">40%</div>
+                <div class="text-blue-200">Faster Delivery</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-20 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Values</h2>
+          <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+            These core values guide everything we do at Climax Innovation.
+          </p>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {values.map((value) => (
+            <div class="bg-white rounded-2xl p-6 text-center shadow-sm">
+              <div class="text-4xl mb-4">{value.icon}</div>
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">{value.title}</h3>
+              <p class="text-gray-600">{value.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Journey</h2>
+          <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+            From a vision to a global leader in construction technology.
+          </p>
+        </div>
+        <div class="relative">
+          {milestones.map((milestone, index) => (
+            <div class="flex gap-8 mb-8 last:mb-0">
+              <div class="flex flex-col items-center">
+                <div class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold">
+                  {milestone.year}
+                </div>
+                {index < milestones.length - 1 && (
+                  <div class="w-0.5 h-full bg-blue-200 mt-4"></div>
+                )}
+              </div>
+              <div class="pt-3">
+                <h3 class="text-xl font-semibold text-gray-900">{milestone.title}</h3>
+                <p class="text-gray-600 mt-1">{milestone.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <CTA
+      title="Ready to Transform Your Projects?"
+      description="Let us show you how our solutions can improve your construction operations."
+    />
+  </main>
+  <Footer />
+</Layout>

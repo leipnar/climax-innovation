@@ -1,0 +1,81 @@
+---
+interface Props {
+  logo?: string;
+}
+
+const { logo } = Astro.props;
+const navItems = [
+  { label: 'Home', href: '/' },
+  { label: 'About', href: '/about' },
+  { label: 'Services', href: '/services' },
+  { label: 'Blog', href: '/blog' },
+  { label: 'Contact', href: '/contact' },
+];
+---
+
+<header class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm shadow-sm">
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16 md:h-20">
+      <a href="/" class="flex items-center gap-2">
+        <span class="text-xl md:text-2xl font-bold text-blue-600">Climax</span>
+        <span class="text-xl md:text-2xl font-light text-gray-800">Innovation</span>
+      </a>
+      
+      <div class="hidden md:flex items-center gap-8">
+        {navItems.map((item) => (
+          <a
+            href={item.href}
+            class="text-gray-600 hover:text-blue-600 transition-colors font-medium"
+          >
+            {item.label}
+          </a>
+        ))}
+      </div>
+      
+      <a
+        href="/contact"
+        class="hidden md:inline-flex items-center px-5 py-2.5 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition-colors"
+      >
+        Get Started
+      </a>
+      
+      <button
+        id="mobile-menu-btn"
+        class="md:hidden p-2 rounded-lg hover:bg-gray-100"
+        aria-label="Toggle menu"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+    
+    <div id="mobile-menu" class="hidden md:hidden pb-4">
+      <div class="flex flex-col gap-2">
+        {navItems.map((item) => (
+          <a
+            href={item.href}
+            class="px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg"
+          >
+            {item.label}
+          </a>
+        ))}
+        <a
+          href="/contact"
+          class="mt-2 px-4 py-2.5 bg-blue-600 text-white rounded-lg font-medium text-center"
+        >
+          Get Started
+        </a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  
+  btn?.addEventListener('click', () => {
+    menu?.classList.toggle('hidden');
+  });
+</script>

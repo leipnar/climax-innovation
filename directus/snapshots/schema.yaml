@@ -1,0 +1,359 @@
+{
+  "version": 1,
+  "directus": "11.0.0",
+  "vendor": "mysql",
+  "collections": [
+    {
+      "collection": "pages",
+      "meta": {
+        "icon": "article",
+        "display_template": "{{title}}",
+        "singleton": false,
+        "translations": null,
+        "archive_field": null,
+        "sort_field": "sort"
+      },
+      "schema": {}
+    },
+    {
+      "collection": "services",
+      "meta": {
+        "icon": "construction",
+        "display_template": "{{title}}",
+        "singleton": false,
+        "sort_field": "sort"
+      },
+      "schema": {}
+    },
+    {
+      "collection": "testimonials",
+      "meta": {
+        "icon": "format_quote",
+        "display_template": "{{name}} - {{company}}",
+        "singleton": false,
+        "sort_field": "sort"
+      },
+      "schema": {}
+    },
+    {
+      "collection": "slides",
+      "meta": {
+        "icon": "slideshow",
+        "display_template": "{{title}}",
+        "singleton": false,
+        "sort_field": "sort"
+      },
+      "schema": {}
+    },
+    {
+      "collection": "blog_posts",
+      "meta": {
+        "icon": "newspaper",
+        "display_template": "{{title}}",
+        "singleton": false,
+        "sort_field": null
+      },
+      "schema": {}
+    },
+    {
+      "collection": "global",
+      "meta": {
+        "icon": "public",
+        "display_template": "{{site_name}}",
+        "singleton": true
+      },
+      "schema": {}
+    }
+  ],
+  "fields": [
+    {
+      "collection": "pages",
+      "field": "id",
+      "type": "integer",
+      "meta": { "interface": "input", "hidden": true },
+      "schema": { "is_primary_key": true }
+    },
+    {
+      "collection": "pages",
+      "field": "slug",
+      "type": "string",
+      "meta": { "interface": "input", "options": { "slug": true } },
+      "schema": { "is_unique": true }
+    },
+    {
+      "collection": "pages",
+      "field": "title",
+      "type": "string",
+      "meta": { "interface": "input", "width": "full" }
+    },
+    {
+      "collection": "pages",
+      "field": "content",
+      "type": "text",
+      "meta": { "interface": "input-rich-text-html", "width": "full" }
+    },
+    {
+      "collection": "pages",
+      "field": "meta_description",
+      "type": "string",
+      "meta": { "interface": "input-multiline" }
+    },
+    {
+      "collection": "pages",
+      "field": "hero_title",
+      "type": "string",
+      "meta": { "interface": "input" }
+    },
+    {
+      "collection": "pages",
+      "field": "hero_subtitle",
+      "type": "string",
+      "meta": { "interface": "input" }
+    },
+    {
+      "collection": "pages",
+      "field": "hero_image",
+      "type": "uuid",
+      "meta": { "interface": "file-image" },
+      "schema": {}
+    },
+    {
+      "collection": "pages",
+      "field": "sort",
+      "type": "integer",
+      "meta": { "interface": "input", "hidden": true },
+      "schema": { "default_value": 0 }
+    },
+    {
+      "collection": "services",
+      "field": "id",
+      "type": "integer",
+      "meta": { "interface": "input", "hidden": true },
+      "schema": { "is_primary_key": true }
+    },
+    {
+      "collection": "services",
+      "field": "title",
+      "type": "string",
+      "meta": { "interface": "input", "width": "full" }
+    },
+    {
+      "collection": "services",
+      "field": "description",
+      "type": "text",
+      "meta": { "interface": "input-multiline", "width": "full" }
+    },
+    {
+      "collection": "services",
+      "field": "icon",
+      "type": "string",
+      "meta": { "interface": "input", "note": "Icon key: monitoring, safety, resource, ai, sustainability, data, maintenance, supply" }
+    },
+    {
+      "collection": "services",
+      "field": "sort",
+      "type": "integer",
+      "meta": { "interface": "input", "hidden": true },
+      "schema": { "default_value": 0 }
+    },
+    {
+      "collection": "testimonials",
+      "field": "id",
+      "type": "integer",
+      "meta": { "interface": "input", "hidden": true },
+      "schema": { "is_primary_key": true }
+    },
+    {
+      "collection": "testimonials",
+      "field": "name",
+      "type": "string",
+      "meta": { "interface": "input" }
+    },
+    {
+      "collection": "testimonials",
+      "field": "role",
+      "type": "string",
+      "meta": { "interface": "input" }
+    },
+    {
+      "collection": "testimonials",
+      "field": "company",
+      "type": "string",
+      "meta": { "interface": "input" }
+    },
+    {
+      "collection": "testimonials",
+      "field": "content",
+      "type": "text",
+      "meta": { "interface": "input-multiline", "width": "full" }
+    },
+    {
+      "collection": "testimonials",
+      "field": "avatar",
+      "type": "uuid",
+      "meta": { "interface": "file-image" }
+    },
+    {
+      "collection": "testimonials",
+      "field": "sort",
+      "type": "integer",
+      "meta": { "interface": "input", "hidden": true },
+      "schema": { "default_value": 0 }
+    },
+    {
+      "collection": "slides",
+      "field": "id",
+      "type": "integer",
+      "meta": { "interface": "input", "hidden": true },
+      "schema": { "is_primary_key": true }
+    },
+    {
+      "collection": "slides",
+      "field": "title",
+      "type": "string",
+      "meta": { "interface": "input", "width": "full" }
+    },
+    {
+      "collection": "slides",
+      "field": "subtitle",
+      "type": "string",
+      "meta": { "interface": "input" }
+    },
+    {
+      "collection": "slides",
+      "field": "description",
+      "type": "text",
+      "meta": { "interface": "input-multiline" }
+    },
+    {
+      "collection": "slides",
+      "field": "image",
+      "type": "uuid",
+      "meta": { "interface": "file-image" }
+    },
+    {
+      "collection": "slides",
+      "field": "cta_text",
+      "type": "string",
+      "meta": { "interface": "input" }
+    },
+    {
+      "collection": "slides",
+      "field": "cta_link",
+      "type": "string",
+      "meta": { "interface": "input" }
+    },
+    {
+      "collection": "slides",
+      "field": "sort",
+      "type": "integer",
+      "meta": { "interface": "input", "hidden": true },
+      "schema": { "default_value": 0 }
+    },
+    {
+      "collection": "blog_posts",
+      "field": "id",
+      "type": "integer",
+      "meta": { "interface": "input", "hidden": true },
+      "schema": { "is_primary_key": true }
+    },
+    {
+      "collection": "blog_posts",
+      "field": "slug",
+      "type": "string",
+      "meta": { "interface": "input" },
+      "schema": { "is_unique": true }
+    },
+    {
+      "collection": "blog_posts",
+      "field": "title",
+      "type": "string",
+      "meta": { "interface": "input", "width": "full" }
+    },
+    {
+      "collection": "blog_posts",
+      "field": "excerpt",
+      "type": "text",
+      "meta": { "interface": "input-multiline" }
+    },
+    {
+      "collection": "blog_posts",
+      "field": "content",
+      "type": "text",
+      "meta": { "interface": "input-rich-text-html", "width": "full" }
+    },
+    {
+      "collection": "blog_posts",
+      "field": "featured_image",
+      "type": "uuid",
+      "meta": { "interface": "file-image" }
+    },
+    {
+      "collection": "blog_posts",
+      "field": "published_at",
+      "type": "datetime",
+      "meta": { "interface": "datetime" }
+    },
+    {
+      "collection": "blog_posts",
+      "field": "author",
+      "type": "string",
+      "meta": { "interface": "input" }
+    },
+    {
+      "collection": "blog_posts",
+      "field": "category",
+      "type": "string",
+      "meta": { "interface": "input" }
+    },
+    {
+      "collection": "global",
+      "field": "id",
+      "type": "integer",
+      "meta": { "hidden": true },
+      "schema": { "is_primary_key": true }
+    },
+    {
+      "collection": "global",
+      "field": "site_name",
+      "type": "string",
+      "meta": { "interface": "input" }
+    },
+    {
+      "collection": "global",
+      "field": "site_description",
+      "type": "text",
+      "meta": { "interface": "input-multiline" }
+    },
+    {
+      "collection": "global",
+      "field": "logo",
+      "type": "uuid",
+      "meta": { "interface": "file-image" }
+    },
+    {
+      "collection": "global",
+      "field": "email",
+      "type": "string",
+      "meta": { "interface": "input" }
+    },
+    {
+      "collection": "global",
+      "field": "phone",
+      "type": "string",
+      "meta": { "interface": "input" }
+    },
+    {
+      "collection": "global",
+      "field": "address",
+      "type": "text",
+      "meta": { "interface": "input-multiline" }
+    },
+    {
+      "collection": "global",
+      "field": "social_links",
+      "type": "json",
+      "meta": { "interface": "input-code", "options": { "language": "json" } }
+    }
+  ]
+}

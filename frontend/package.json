@@ -1,0 +1,24 @@
+{
+  "name": "climax-innovation",
+  "type": "module",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "hostinger:build": "npm ci && npm run build",
+    "hostinger:start": "npx serve dist -p 3000"
+  },
+  "dependencies": {
+    "@astrojs/rss": "^4.0.15",
+    "@astrojs/sitemap": "^3.7.0",
+    "@directus/sdk": "^21.1.0",
+    "@tailwindcss/vite": "^4.2.0",
+    "astro": "^5.17.1",
+    "tailwindcss": "^4.2.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

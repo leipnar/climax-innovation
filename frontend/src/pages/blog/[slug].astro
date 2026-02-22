@@ -1,0 +1,129 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const posts: Record<string, { title: string; content: string; date: string; author: string; category: string }> = {
+  'technology-insights-building-smarter-future': {
+    title: 'Technology Insights: Building a Smarter Future - How IoT, AI, and Data Analytics are Transforming Construction',
+    date: '2024-01-15',
+    author: 'Climax Team',
+    category: 'Technology',
+    content: `
+      <p>The construction industry is undergoing a technological revolution. Internet of Things (IoT), Artificial Intelligence (AI), and advanced data analytics are fundamentally changing how we plan, execute, and manage construction projects.</p>
+      
+      <h2>The IoT Revolution in Construction</h2>
+      <p>IoT devices are now ubiquitous on modern construction sites. From smart helmets that monitor worker safety to sensors that track equipment location and utilization, these connected devices generate vast amounts of valuable data.</p>
+      
+      <h2>AI-Powered Decision Making</h2>
+      <p>Artificial Intelligence is transforming construction project management. Machine learning algorithms can predict potential delays, optimize resource allocation, and identify safety hazards before they become incidents.</p>
+      
+      <h2>Data Analytics for Better Outcomes</h2>
+      <p>The combination of IoT data and AI analysis provides unprecedented insights into construction operations. Project managers can make data-driven decisions that improve efficiency, reduce costs, and enhance safety.</p>
+      
+      <h2>Looking Forward</h2>
+      <p>As these technologies continue to evolve, we can expect even greater transformations in the construction industry. The future of construction is smart, connected, and data-driven.</p>
+    `
+  },
+  'project-management-insights': {
+    title: 'Project Management: Insights into Effective Project Management Strategies',
+    date: '2024-01-10',
+    author: 'Climax Team',
+    category: 'Management',
+    content: `
+      <p>Effective project management is crucial for the success of any construction project. Here we explore key strategies that can help project managers deliver projects on time and within budget.</p>
+      
+      <h2>Clear Communication</h2>
+      <p>Establishing clear lines of communication between all stakeholders is essential. This includes regular meetings, transparent reporting, and accessible documentation.</p>
+      
+      <h2>Risk Management</h2>
+      <p>Proactive risk identification and mitigation can prevent many common project issues. Regular risk assessments and contingency planning are vital.</p>
+      
+      <h2>Resource Optimization</h2>
+      <p>Efficient allocation and utilization of resources - including labor, materials, and equipment - is key to project success. Modern tools can help optimize these allocations in real-time.</p>
+    `
+  },
+  'safety-and-compliance': {
+    title: 'Safety and Compliance: Building a Culture of Well-Being on Construction Sites',
+    date: '2024-01-05',
+    author: 'Climax Team',
+    category: 'Safety',
+    content: `
+      <p>Safety should never be compromised on construction sites. Building a strong safety culture protects workers, reduces liability, and improves overall project outcomes.</p>
+      
+      <h2>Training and Education</h2>
+      <p>Regular safety training ensures that all workers understand potential hazards and know how to respond to emergencies. This training should be ongoing and adapted to new technologies and methods.</p>
+      
+      <h2>Technology-Enhanced Safety</h2>
+      <p>Modern technology offers numerous tools for improving site safety, from wearable devices that monitor worker health to AI systems that identify potential hazards in real-time.</p>
+      
+      <h2>Compliance Tracking</h2>
+      <p>Digital systems can help track compliance with safety regulations, ensuring that all requirements are met and documentation is readily available for inspections.</p>
+    `
+  }
+};
+
+export function getStaticPaths() {
+  return [
+    { params: { slug: 'technology-insights-building-smarter-future' } },
+    { params: { slug: 'project-management-insights' } },
+    { params: { slug: 'safety-and-compliance' } },
+  ];
+}
+
+const { slug } = Astro.params;
+const post = posts[slug as keyof typeof posts];
+---
+
+<Layout title={post.title}>
+  <Header />
+  <main>
+    <article>
+      <section class="pt-32 pb-12 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="text-sm font-medium text-blue-600 bg-blue-100 px-3 py-1 rounded-full">
+              {post.category}
+            </span>
+            <span class="text-sm text-gray-500">
+              {new Date(post.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
+            </span>
+          </div>
+          <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+            {post.title}
+          </h1>
+          <div class="flex items-center gap-4">
+            <div class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-semibold">
+              {post.author.charAt(0)}
+            </div>
+            <div>
+              <p class="font-medium text-gray-900">{post.author}</p>
+              <p class="text-sm text-gray-500">Author</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="py-12 bg-white">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="prose prose-lg max-w-none" set:html={post.content} />
+        </div>
+      </section>
+
+      <section class="py-12 bg-gray-50">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <a
+            href="/blog"
+            class="inline-flex items-center text-blue-600 font-medium hover:text-blue-700"
+          >
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+            </svg>
+            Back to Blog
+          </a>
+        </div>
+      </section>
+    </article>
+  </main>
+  <Footer />
+</Layout>

@@ -1,0 +1,32 @@
+services:
+  directus:
+    image: directus/directus:latest
+    ports:
+      - 8055:8055
+    volumes:
+      - ./database:/directus/database
+      - ./uploads:/directus/uploads
+      - ./extensions:/directus/extensions
+    environment:
+      KEY: ${DIRECTUS_KEY:-replace-with-random-string}
+      SECRET: ${DIRECTUS_SECRET:-replace-with-random-string}
+      
+      ADMIN_EMAIL: ${ADMIN_EMAIL:-admin@climaxinnovation.com}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:-admin123}
+      
+      DB_CLIENT: mysql2
+      DB_HOST: ${DB_HOST:-host}
+      DB_PORT: ${DB_PORT:-3306}
+      DB_DATABASE: ${DB_DATABASE:-directus}
+      DB_USER: ${DB_USER:-root}
+      DB_PASSWORD: ${DB_PASSWORD:-secret}
+      
+      WEBSOCKETS_ENABLED: "true"
+      PUBLIC_URL: ${PUBLIC_URL:-http://localhost:8055}
+      
+      EMAIL_FROM: ${EMAIL_FROM:-noreply@climaxinnovation.com}
+      EMAIL_TRANSPORT: ${EMAIL_TRANSPORT:-smtp}
+      EMAIL_SMTP_HOST: ${EMAIL_SMTP_HOST:-smtp.example.com}
+      EMAIL_SMTP_PORT: ${EMAIL_SMTP_PORT:-587}
+      EMAIL_SMTP_USER: ${EMAIL_SMTP_USER:-}
+      EMAIL_SMTP_PASSWORD: ${EMAIL_SMTP_PASSWORD:-}

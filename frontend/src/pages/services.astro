@@ -1,0 +1,123 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import CTA from '../components/CTA.astro';
+
+const services = [
+  {
+    title: 'Real-Time Monitoring and Data Analytics',
+    description: 'Track every aspect of your construction site in real-time with our advanced IoT sensor network. Monitor equipment, materials, personnel, and environmental conditions from a single unified dashboard.',
+    features: ['Live equipment tracking', 'Environmental monitoring', 'Custom dashboards', 'Alert notifications'],
+    icon: 'monitoring'
+  },
+  {
+    title: 'Safety and Risk Management',
+    description: 'Comprehensive safety management system that proactively identifies and mitigates risks. Ensure compliance with regulations while protecting your most valuable asset - your workers.',
+    features: ['Hazard identification', 'Compliance tracking', 'Incident reporting', 'Safety training modules'],
+    icon: 'safety'
+  },
+  {
+    title: 'Resource Management',
+    description: 'Optimize the allocation and utilization of labor, equipment, and materials. Reduce waste and improve efficiency across all your construction projects.',
+    features: ['Labor scheduling', 'Equipment allocation', 'Material tracking', 'Cost optimization'],
+    icon: 'resource'
+  },
+  {
+    title: 'AI Assistant for Project Management',
+    description: 'Leverage artificial intelligence to predict delays, optimize schedules, and make data-driven decisions. Our AI assistant learns from your projects to provide increasingly accurate insights.',
+    features: ['Predictive analytics', 'Schedule optimization', 'Risk prediction', 'Smart recommendations'],
+    icon: 'ai'
+  },
+  {
+    title: 'Sustainability Initiatives',
+    description: 'Track and reduce the environmental impact of your construction projects. Monitor carbon footprint, waste generation, and resource consumption to meet sustainability goals.',
+    features: ['Carbon tracking', 'Waste management', 'Energy monitoring', 'Sustainability reporting'],
+    icon: 'sustainability'
+  },
+  {
+    title: 'Preventive Maintenance',
+    description: 'Predict and prevent equipment failures before they impact your project timeline. Our predictive maintenance system reduces downtime and extends equipment lifespan.',
+    features: ['Failure prediction', 'Maintenance scheduling', 'Parts inventory', 'Performance analytics'],
+    icon: 'maintenance'
+  },
+];
+
+const iconPaths: Record<string, string> = {
+  monitoring: 'M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z',
+  safety: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z',
+  resource: 'M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10',
+  ai: 'M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z',
+  sustainability: 'M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z',
+  maintenance: 'M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z M15 12a3 3 0 11-6 0 3 3 0 016 0z',
+};
+---
+
+<Layout title="Services">
+  <Header />
+  <main>
+    <section class="pt-32 pb-20 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl">
+          <p class="text-blue-600 font-semibold tracking-wide uppercase text-sm mb-4">
+            Our Services
+          </p>
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
+            Comprehensive Construction Technology Solutions
+          </h1>
+          <p class="text-lg text-gray-600 leading-relaxed">
+            From real-time monitoring to AI-powered insights, we provide end-to-end 
+            solutions that transform how construction projects are managed.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="space-y-16">
+          {services.map((service, index) => (
+            <div id={service.icon} class={`grid lg:grid-cols-2 gap-12 items-center ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
+              <div class={index % 2 === 1 ? 'lg:order-2' : ''}>
+                <div class="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
+                  <svg class="w-7 h-7 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={iconPaths[service.icon]} />
+                  </svg>
+                </div>
+                <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+                  {service.title}
+                </h2>
+                <p class="text-lg text-gray-600 mb-6">
+                  {service.description}
+                </p>
+                <ul class="space-y-3">
+                  {service.features.map((feature) => (
+                    <li class="flex items-center gap-3">
+                      <svg class="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                      </svg>
+                      <span class="text-gray-700">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div class={index % 2 === 1 ? 'lg:order-1' : ''}>
+                <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8 aspect-video flex items-center justify-center">
+                  <svg class="w-32 h-32 text-blue-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d={iconPaths[service.icon]} />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <CTA
+      title="Ready to Get Started?"
+      description="Contact us to learn how our services can transform your construction projects."
+    />
+  </main>
+  <Footer />
+</Layout>

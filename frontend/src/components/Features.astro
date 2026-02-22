@@ -1,0 +1,70 @@
+---
+
+const features = [
+  {
+    title: 'Real-Time Monitoring',
+    description: 'Track every aspect of your construction site in real-time with IoT sensors and smart devices.',
+    stat: '99.9%',
+    statLabel: 'Uptime'
+  },
+  {
+    title: 'AI-Powered Insights',
+    description: 'Leverage machine learning to predict issues before they occur and optimize project timelines.',
+    stat: '40%',
+    statLabel: 'Faster Delivery'
+  },
+  {
+    title: 'Safety First',
+    description: 'Comprehensive safety management with automated alerts and compliance tracking.',
+    stat: '60%',
+    statLabel: 'Fewer Incidents'
+  },
+  {
+    title: 'Data Integration',
+    description: 'Seamlessly connect with your existing tools and systems for unified project management.',
+    stat: '50+',
+    statLabel: 'Integrations'
+  },
+];
+---
+
+<section class="py-20 md:py-28 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <p class="text-blue-600 font-semibold tracking-wide uppercase text-sm mb-4">
+        Key Features
+      </p>
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+        Why Choose Climax Innovation?
+      </h2>
+      <p class="text-lg text-gray-600">
+        Our platform delivers measurable results that transform construction operations.
+      </p>
+    </div>
+    
+    <div class="grid md:grid-cols-2 gap-6 lg:gap-8">
+      {features.map((feature) => (
+        <div class="bg-white rounded-2xl p-6 md:p-8 shadow-sm hover:shadow-lg transition-shadow">
+          <div class="flex items-start gap-6">
+            <div class="flex-shrink-0">
+              <div class="text-3xl md:text-4xl font-bold text-blue-600">
+                {feature.stat}
+              </div>
+              <div class="text-sm text-gray-500 mt-1">
+                {feature.statLabel}
+              </div>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">
+                {feature.title}
+              </h3>
+              <p class="text-gray-600 leading-relaxed">
+                {feature.description}
+              </p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
