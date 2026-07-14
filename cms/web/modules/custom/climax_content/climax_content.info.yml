@@ -1,0 +1,11 @@
+name: Climax Content Types
+type: module
+description: Custom content types for Climax Innovation website
+package: Climax
+core_version_requirement: ^10 || ^11
+dependencies:
+  - node
+  - field
+  - text
+  - image
+  - path
