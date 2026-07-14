@@ -48,6 +48,9 @@ try {
     $drupal_session = $_SESSION;
     $sid = bin2hex(random_bytes(32));
 
+    // Add the CSRF token seed Drupal expects in the metadata bag.
+    $drupal_session['_sf2_meta']['s'] = \Drupal\Component\Utility\Crypt::randomBytesBase64();
+
     // Encode the session using PHP's native serializer (pipe-separated bags)
     // so Drupal's Symfony session storage can read it back.
     ini_set('session.save_handler', 'files');
