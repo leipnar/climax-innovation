@@ -1,0 +1,152 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import CTA from '../components/CTA.astro';
+
+const jobs = [
+  {
+    title: 'Senior Software Engineer',
+    department: 'Engineering',
+    location: 'Remote',
+    type: 'Full-time',
+    description: 'Join our engineering team to build cutting-edge construction technology solutions.',
+  },
+  {
+    title: 'Project Manager',
+    department: 'Operations',
+    location: 'Remote',
+    type: 'Full-time',
+    description: 'Lead client implementations and ensure successful project delivery.',
+  },
+  {
+    title: 'Data Analyst',
+    department: 'Analytics',
+    location: 'Remote',
+    type: 'Full-time',
+    description: 'Transform construction data into actionable insights for our clients.',
+  },
+  {
+    title: 'Sales Representative',
+    department: 'Sales',
+    location: 'Remote',
+    type: 'Full-time',
+    description: 'Help construction companies discover the power of our platform.',
+  },
+];
+
+const benefits = [
+  { title: 'Remote Work', description: 'Work from anywhere in the world', icon: '🌍' },
+  { title: 'Health Insurance', description: 'Comprehensive medical coverage', icon: '🏥' },
+  { title: 'Learning Budget', description: 'Annual budget for courses & conferences', icon: '📚' },
+  { title: 'Flexible Hours', description: 'Work on your own schedule', icon: '⏰' },
+  { title: 'Team Events', description: 'Regular team building activities', icon: '🎉' },
+  { title: 'Growth Opportunities', description: 'Clear career progression paths', icon: '📈' },
+];
+---
+
+<Layout title="Careers">
+  <Header />
+  <main>
+    <section class="pt-32 pb-20 relative overflow-hidden">
+      <div class="absolute inset-0">
+        <img 
+          src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1200&q=75&auto=format" 
+          srcset="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=800&q=75&auto=format 800w,
+                  https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1200&q=75&auto=format 1200w,
+                  https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1920&q=80&auto=format 1920w"
+          sizes="100vw"
+          alt="" 
+          class="w-full h-full object-cover"
+          loading="eager"
+          width="1920"
+          height="1080"
+        />
+        <div class="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/70 to-slate-900/50"></div>
+      </div>
+      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl">
+          <p class="text-amber-400 font-semibold tracking-wide uppercase text-sm mb-4">
+            Careers
+          </p>
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+            Join Our Team
+          </h1>
+          <p class="text-lg text-gray-300 leading-relaxed">
+            Be part of a team that's transforming the construction industry with 
+            innovative technology. We're looking for passionate people who want to 
+            make a difference.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Why Work With Us?</h2>
+          <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+            We believe in creating an environment where great people can do their best work.
+          </p>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {benefits.map((benefit) => (
+            <div class="bg-gray-50 rounded-2xl p-6 text-center">
+              <div class="text-4xl mb-4">{benefit.icon}</div>
+              <h3 class="text-lg font-semibold text-gray-900 mb-2">{benefit.title}</h3>
+              <p class="text-gray-600">{benefit.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="py-20 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Open Positions</h2>
+          <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+            Find your next opportunity and help us build the future of construction technology.
+          </p>
+        </div>
+        <div class="space-y-4">
+          {jobs.map((job) => (
+            <div class="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow">
+              <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div>
+                  <h3 class="text-xl font-semibold text-gray-900 mb-2">{job.title}</h3>
+                  <p class="text-gray-600 mb-3">{job.description}</p>
+                  <div class="flex flex-wrap gap-3">
+                    <span class="inline-flex items-center px-3 py-1 rounded-full text-sm bg-amber-100 text-amber-700">
+                      {job.department}
+                    </span>
+                    <span class="inline-flex items-center px-3 py-1 rounded-full text-sm bg-gray-100 text-gray-700">
+                      {job.location}
+                    </span>
+                    <span class="inline-flex items-center px-3 py-1 rounded-full text-sm bg-gray-100 text-gray-700">
+                      {job.type}
+                    </span>
+                  </div>
+                </div>
+                <a
+                  href="/contact"
+                  class="inline-flex items-center justify-center px-6 py-3 bg-amber-500 text-white rounded-lg font-medium hover:bg-amber-600 transition-colors whitespace-nowrap"
+                >
+                  Apply Now
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <CTA
+      title="Don't See a Perfect Fit?"
+      description="We're always looking for talented people. Send us your resume and let us know how you can contribute."
+      primaryCta={{ text: 'Contact Us', href: '/contact' }}
+      secondaryCta={{ text: 'Learn More', href: '/about' }}
+    />
+  </main>
+  <Footer />
+</Layout>

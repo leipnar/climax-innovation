@@ -33,21 +33,63 @@ const milestones = [
   { year: '2022', title: 'AI Integration', description: 'Introduced AI-powered predictive analytics.' },
   { year: '2024', title: 'Global Expansion', description: 'Expanded to serve clients across 20+ countries.' },
 ];
+
+const team = [
+  {
+    name: 'Emad Rezaeian',
+    role: 'CEO',
+    image: 'https://old.climaxinnovation.com/wp-content/uploads/elementor/thumbs/emad-rjjnsl58fwtl6q34zpwlfwlwpq2dtpm8bsujloawow.jpg',
+    linkedin: 'http://linkedin.com/in/emad-rezaeian-53949376'
+  },
+  {
+    name: 'Rasool Askari',
+    role: 'HR and Administrative Manager',
+    image: 'https://old.climaxinnovation.com/wp-content/uploads/elementor/thumbs/Rasol-rjjnsl58fwtl6q34zpwlfwlwpq2dtpm8bsujloawow.jpg',
+    linkedin: 'https://www.linkedin.com/in/rasool-askari-1ab944288'
+  },
+  {
+    name: 'Mojtaba Khashayarfard',
+    role: 'Marketing and Commercial Manager',
+    image: 'https://old.climaxinnovation.com/wp-content/uploads/elementor/thumbs/Mojtaba-rjjnsl58fwtl6q34zpwlfwlwpq2dtpm8bsujloawow.jpg',
+    linkedin: 'https://www.linkedin.com/in/mojtaba-khashayar-fard-402a3a8b'
+  },
+  {
+    name: 'Mehrdad Habibi',
+    role: 'Technical Manager',
+    image: 'https://old.climaxinnovation.com/wp-content/uploads/elementor/thumbs/Mehrdad-rjjnsl58fwtl6q34zpwlfwlwpq2dtpm8bsujloawow.jpg',
+    linkedin: 'http://linkedin.com/in/mehrdad-habibi-b4725a279'
+  },
+];
 ---
 
 <Layout title="About Us">
   <Header />
   <main>
-    <section class="pt-32 pb-20 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section class="pt-32 pb-20 relative overflow-hidden">
+      <div class="absolute inset-0">
+        <img 
+          src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1200&q=75&auto=format" 
+          srcset="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=75&auto=format 800w,
+                  https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1200&q=75&auto=format 1200w,
+                  https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&q=80&auto=format 1920w"
+          sizes="100vw"
+          alt="" 
+          class="w-full h-full object-cover"
+          loading="eager"
+          width="1920"
+          height="1080"
+        />
+        <div class="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/70 to-slate-900/50"></div>
+      </div>
+      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="max-w-3xl">
-          <p class="text-blue-600 font-semibold tracking-wide uppercase text-sm mb-4">
+          <p class="text-amber-400 font-semibold tracking-wide uppercase text-sm mb-4">
             About Us
           </p>
-          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
             Building a Smarter Future
           </h1>
-          <p class="text-lg text-gray-600 leading-relaxed">
+          <p class="text-lg text-gray-300 leading-relaxed">
             Climax Innovation is at the forefront of transforming the construction industry 
             through cutting-edge technology. We combine IoT, AI, and data analytics to create 
             safer, smarter, and more sustainable construction operations.
@@ -74,26 +116,8 @@ const milestones = [
               results-driven solutions.
             </p>
           </div>
-          <div class="bg-gradient-to-br from-blue-600 to-indigo-600 rounded-2xl p-8 text-white">
-            <h3 class="text-2xl font-bold mb-6">Our Impact</h3>
-            <div class="grid grid-cols-2 gap-6">
-              <div>
-                <div class="text-4xl font-bold">500+</div>
-                <div class="text-blue-200">Projects Completed</div>
-              </div>
-              <div>
-                <div class="text-4xl font-bold">20+</div>
-                <div class="text-blue-200">Countries Served</div>
-              </div>
-              <div>
-                <div class="text-4xl font-bold">60%</div>
-                <div class="text-blue-200">Safety Improvement</div>
-              </div>
-              <div>
-                <div class="text-4xl font-bold">40%</div>
-                <div class="text-blue-200">Faster Delivery</div>
-              </div>
-            </div>
+          <div class="rounded-2xl overflow-hidden shadow-xl">
+            <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=600&q=75&auto=format" alt="Construction technology" loading="lazy" decoding="async" class="w-full h-auto hover:scale-105 transition-transform duration-500" />
           </div>
         </div>
       </div>
@@ -122,6 +146,48 @@ const milestones = [
     <section class="py-20 bg-white">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16">
+          <p class="text-amber-500 font-semibold tracking-wide uppercase text-sm mb-4">Our Team</p>
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Meet the Experts</h2>
+          <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+            Our dedicated team of professionals brings together expertise in construction, 
+            technology, and innovation.
+          </p>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {team.map((member) => (
+            <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
+              <div class="aspect-square bg-gray-100">
+                <img 
+                  src={member.image} 
+                  alt={member.name}
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <div class="p-6 text-center">
+                <h3 class="text-xl font-semibold text-gray-900 mb-1">{member.name}</h3>
+                <p class="text-amber-500 mb-4">{member.role}</p>
+                {member.linkedin !== '#' && (
+                  <a 
+                    href={member.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center text-gray-600 hover:text-amber-500 transition-colors"
+                  >
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                    </svg>
+                  </a>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="py-20 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
           <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Journey</h2>
           <p class="text-lg text-gray-600 max-w-2xl mx-auto">
             From a vision to a global leader in construction technology.
@@ -131,11 +197,11 @@ const milestones = [
           {milestones.map((milestone, index) => (
             <div class="flex gap-8 mb-8 last:mb-0">
               <div class="flex flex-col items-center">
-                <div class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold">
+                <div class="w-16 h-16 bg-amber-500 rounded-full flex items-center justify-center text-white font-bold">
                   {milestone.year}
                 </div>
                 {index < milestones.length - 1 && (
-                  <div class="w-0.5 h-full bg-blue-200 mt-4"></div>
+                  <div class="w-0.5 h-full bg-amber-200 mt-4"></div>
                 )}
               </div>
               <div class="pt-3">

@@ -1,5 +1,5 @@
 ---
-import type { Service } from '../lib/directus';
+import type { Service } from '../lib/drupal';
 
 interface Props {
   services: Service[];
@@ -22,7 +22,7 @@ const iconMap: Record<string, string> = {
 <section class="py-20 md:py-28 bg-white" id="services">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center max-w-3xl mx-auto mb-16">
-      <p class="text-blue-600 font-semibold tracking-wide uppercase text-sm mb-4">
+      <p class="text-amber-500 font-semibold tracking-wide uppercase text-sm mb-4">
         Our Services
       </p>
       <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
@@ -37,11 +37,11 @@ const iconMap: Record<string, string> = {
     <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
       {services.map((service, index) => (
         <div
-          class="group bg-white border border-gray-100 rounded-2xl p-6 hover:shadow-xl hover:border-blue-100 transition-all duration-300"
+          class="group bg-white border border-gray-100 rounded-2xl p-6 hover:shadow-xl hover:border-amber-100 transition-all duration-300"
         >
-          <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-4 group-hover:bg-blue-600 transition-colors">
+          <div class="w-12 h-12 bg-amber-100 rounded-xl flex items-center justify-center mb-4 group-hover:bg-amber-500 transition-colors">
             <svg
-              class="w-6 h-6 text-blue-600 group-hover:text-white transition-colors"
+              class="w-6 h-6 text-amber-500 group-hover:text-white transition-colors"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"

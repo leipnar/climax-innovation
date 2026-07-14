@@ -7,92 +7,10 @@ import Services from '../components/Services.astro';
 import Features from '../components/Features.astro';
 import Testimonials from '../components/Testimonials.astro';
 import CTA from '../components/CTA.astro';
+import { getServices, getTestimonials } from '../lib/drupal';
 
-const services = [
-  {
-    id: 1,
-    title: 'Real-Time Monitoring',
-    description: 'Track equipment, materials, and personnel across your construction sites with IoT-enabled sensors.',
-    icon: 'monitoring',
-    sort: 1,
-  },
-  {
-    id: 2,
-    title: 'Safety & Risk Management',
-    description: 'Proactive safety monitoring with automated alerts and comprehensive compliance tracking.',
-    icon: 'safety',
-    sort: 2,
-  },
-  {
-    id: 3,
-    title: 'Resource Management',
-    description: 'Optimize labor, equipment, and material allocation for maximum efficiency.',
-    icon: 'resource',
-    sort: 3,
-  },
-  {
-    id: 4,
-    title: 'AI Assistant',
-    description: 'Intelligent project management with AI-powered insights and recommendations.',
-    icon: 'ai',
-    sort: 4,
-  },
-  {
-    id: 5,
-    title: 'Sustainability Initiatives',
-    description: 'Track and reduce environmental impact with smart resource management.',
-    icon: 'sustainability',
-    sort: 5,
-  },
-  {
-    id: 6,
-    title: 'Data Analytics',
-    description: 'Transform raw data into actionable insights for better decision-making.',
-    icon: 'data',
-    sort: 6,
-  },
-  {
-    id: 7,
-    title: 'Preventive Maintenance',
-    description: 'Predict and prevent equipment failures before they impact your project.',
-    icon: 'maintenance',
-    sort: 7,
-  },
-  {
-    id: 8,
-    title: 'Supply Chain Management',
-    description: 'Streamline procurement and logistics for on-time material delivery.',
-    icon: 'supply',
-    sort: 8,
-  },
-];
-
-const testimonials = [
-  {
-    id: 1,
-    name: 'Michael Chen',
-    role: 'Project Director',
-    company: 'BuildTech Corp',
-    content: 'Climax Innovation transformed how we manage our construction sites. The real-time monitoring has reduced our project delays by 40%.',
-    sort: 1,
-  },
-  {
-    id: 2,
-    name: 'Sarah Williams',
-    role: 'Safety Manager',
-    company: 'SafeBuild Inc',
-    content: 'The safety management features are exceptional. We have seen a significant reduction in workplace incidents since implementation.',
-    sort: 2,
-  },
-  {
-    id: 3,
-    name: 'David Rodriguez',
-    role: 'Operations Lead',
-    company: 'ConstructPlus',
-    content: 'The AI assistant provides insights that would have taken us weeks to compile manually. Game-changing for project management.',
-    sort: 3,
-  },
-];
+const services = await getServices();
+const testimonials = await getTestimonials();
 ---
 
 <Layout title="Home">

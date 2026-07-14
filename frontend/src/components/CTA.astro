@@ -20,18 +20,33 @@ const {
 } = Astro.props;
 ---
 
-<section class="py-20 md:py-28 bg-white">
-  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-    <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+<section class="py-20 md:py-28 relative overflow-hidden">
+  <div class="absolute inset-0">
+    <img 
+      src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1200&q=75&auto=format" 
+      srcset="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&q=75&auto=format 800w,
+              https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1200&q=75&auto=format 1200w,
+              https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1920&q=80&auto=format 1920w"
+      sizes="100vw"
+      alt="" 
+      class="w-full h-full object-cover"
+      loading="lazy"
+      width="1920"
+      height="1080"
+    />
+    <div class="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-slate-900/90 to-slate-900/80"></div>
+  </div>
+  <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
       {title}
     </h2>
-    <p class="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+    <p class="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">
       {description}
     </p>
     <div class="flex flex-col sm:flex-row gap-4 justify-center">
       <a
         href={primaryCta.href}
-        class="inline-flex items-center justify-center px-8 py-4 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-all hover:shadow-lg hover:shadow-blue-600/25"
+        class="inline-flex items-center justify-center px-8 py-4 bg-amber-500 text-white rounded-lg font-semibold hover:bg-amber-600 transition-all hover:shadow-lg hover:shadow-amber-500/25"
       >
         {primaryCta.text}
         <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -40,7 +55,7 @@ const {
       </a>
       <a
         href={secondaryCta.href}
-        class="inline-flex items-center justify-center px-8 py-4 border-2 border-gray-300 text-gray-700 rounded-lg font-semibold hover:border-blue-600 hover:text-blue-600 transition-colors"
+        class="inline-flex items-center justify-center px-8 py-4 border-2 border-white/30 text-white rounded-lg font-semibold hover:border-amber-400 hover:text-amber-400 transition-colors"
       >
         {secondaryCta.text}
       </a>
