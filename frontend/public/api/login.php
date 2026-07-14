@@ -1,6 +1,4 @@
 <?php
-session_start();
-
 header('Content-Type: application/json');
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
@@ -45,11 +43,30 @@ try {
 
     user_login_finalize($account);
 
-    $sid = session_id();
-    $name = session_name();
+    // Drupal's session write may not commit in this custom context, so we
+    // persist the session data manually and set the cookie ourselves.
+    $drupal_session = $_SESSION;
+    $sid = bin2hex(random_bytes(32));
+    $expires = time() + 14 * 86400;
+
+    \Drupal::database()->merge('sessions')
+        ->key('sid', $sid)
+        ->fields([
+            'uid' => $account->id(),
+            'hostname' => $request->getClientIp() ?? '',
+            'timestamp' => time(),
+            'session' => serialize($drupal_session),
+        ])
+        ->execute();
+
+    // The frontend runs under /api, but the CMS runs under /cms/web.
+    // Drupal builds the session cookie name from the request base path,
+    // so we must set the cookie name the CMS expects.
+    $cms_request = Symfony\Component\HttpFoundation\Request::create('https://climaxinnovation.com/cms/web/admin');
+    $session_name = \Drupal::service('session_configuration')->getSessionName($cms_request);
     $params = session_get_cookie_params();
-    setcookie($name, $sid, time() + $params['lifetime'], $params['path'], $params['domain'], $params['secure'], $params['httponly']);
-    session_write_close();
+    $lifetime = $params['lifetime'] > 0 ? $params['lifetime'] : 14 * 86400;
+    setcookie($session_name, $sid, time() + $lifetime, $params['path'], $params['domain'], $params['secure'], $params['httponly']);
 
     header('Location: /dashboard');
     exit;
