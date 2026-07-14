@@ -47,7 +47,15 @@ try {
     // persist the session data manually and set the cookie ourselves.
     $drupal_session = $_SESSION;
     $sid = bin2hex(random_bytes(32));
-    $expires = time() + 14 * 86400;
+
+    // Encode the session using PHP's native serializer (pipe-separated bags)
+    // so Drupal's Symfony session storage can read it back.
+    ini_set('session.save_handler', 'files');
+    session_id($sid);
+    session_start();
+    $_SESSION = $drupal_session;
+    $session_data = session_encode();
+    session_abort();
 
     \Drupal::database()->merge('sessions')
         ->key('sid', $sid)
@@ -55,7 +63,7 @@ try {
             'uid' => $account->id(),
             'hostname' => $request->getClientIp() ?? '',
             'timestamp' => time(),
-            'session' => serialize($drupal_session),
+            'session' => $session_data,
         ])
         ->execute();
 
