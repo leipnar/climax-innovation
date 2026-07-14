@@ -62,9 +62,9 @@ try {
     // The frontend runs under /api, but the CMS runs under /cms/web.
     // Drupal builds the session cookie name from the request base path,
     // so we must set the cookie name the CMS expects.
-    $cms_request = Symfony\Component\HttpFoundation\Request::create('https://climaxinnovation.com/cms/web/admin');
-    $session_name_source = $cms_request->getHost() . rtrim($cms_request->getBasePath(), '/');
-    $session_name = ($cms_request->isSecure() ? 'SSESS' : 'SESS') . substr(hash('sha256', $session_name_source), 0, 32);
+    $cms_base_path = '/cms/web';
+    $session_name_source = $request->getHost() . rtrim($cms_base_path, '/');
+    $session_name = ($request->isSecure() ? 'SSESS' : 'SESS') . substr(hash('sha256', $session_name_source), 0, 32);
 
     $params = session_get_cookie_params();
     $lifetime = $params['lifetime'] > 0 ? $params['lifetime'] : 14 * 86400;
