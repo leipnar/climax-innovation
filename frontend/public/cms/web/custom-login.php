@@ -40,6 +40,9 @@ try {
 
     user_login_finalize($account);
 
+    // Start the session now so the CMS session cookie is sent to the browser.
+    \Drupal::service('session_manager')->save();
+
     header('Location: /dashboard');
     exit;
 
