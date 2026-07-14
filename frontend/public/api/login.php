@@ -45,7 +45,7 @@ try {
 
     // Drupal's session write may not commit in this custom context, so we
     // persist the session data manually and set the cookie ourselves.
-    $sid = \Drupal\Component\Utility\Crypt::randomBytesBase64();
+    $sid = \Drupal\Component\Utility\Crypt::randomBytesBase64(36);
 
     // Build the session payload in the exact format Drupal's Symfony session
     // storage expects (pipe-separated bags), matching a real Drupal login.
