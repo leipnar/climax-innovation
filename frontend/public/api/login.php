@@ -45,20 +45,22 @@ try {
 
     // Drupal's session write may not commit in this custom context, so we
     // persist the session data manually and set the cookie ourselves.
-    $drupal_session = $_SESSION;
     $sid = bin2hex(random_bytes(32));
 
-    // Add the CSRF token seed Drupal expects in the metadata bag.
-    $drupal_session['_sf2_meta']['s'] = \Drupal\Component\Utility\Crypt::randomBytesBase64();
-
-    // Encode the session using PHP's native serializer (pipe-separated bags)
-    // so Drupal's Symfony session storage can read it back.
-    ini_set('session.save_handler', 'files');
-    session_id($sid);
-    session_start();
-    $_SESSION = $drupal_session;
-    $session_data = session_encode();
-    session_abort();
+    // Build the session payload in the exact format Drupal's Symfony session
+    // storage expects (pipe-separated bags), matching a real Drupal login.
+    $now = time();
+    $attributes = [
+        'uid' => (string) $account->id(),
+        'check_logged_in' => true,
+    ];
+    $metadata = [
+        'u' => $now,
+        'c' => $now,
+        'l' => 2000000,
+        's' => \Drupal\Component\Utility\Crypt::randomBytesBase64(),
+    ];
+    $session_data = '_sf2_attributes|' . serialize($attributes) . '_sf2_meta|' . serialize($metadata);
 
     \Drupal::database()->merge('sessions')
         ->key('sid', $sid)
